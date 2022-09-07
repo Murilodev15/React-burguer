@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
 background: #0A0A10;
+
 background-size: cover;
 
 display: flex;
@@ -73,4 +74,54 @@ cursor: pointer;
 }
 `;
 
-export const User = styled.li``
+export const User = styled.li`
+        display: flex;
+        justify-content:space-around;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.25);
+        box-shadow: 0px 4px rgba(0,0,0,0.25);
+        border-radius: 14px;
+        border: none;
+        padding:1px;
+        margin-top:20px;
+              
+        p {
+            font-style: normal;
+            font-weight: 280;
+            font-size: 18px;
+            line-height: 28px;
+            color: #FFFFFF;    
+            width: 280px;
+            overflow-wrap: break-word;  
+            word-wrap: break-word; 
+            word-break: break-word;   
+            padding:10px;
+        }
+       p1 {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 28px;
+            color: #FFFFFF;   
+            margin-top:20px;
+            padding: 10px;  
+        }       
+        button {
+           background: none;
+           border: none;
+           cursor: pointer;       
+        }
+        div{
+           display:flex;        
+           flex-direction:column;
+           padding-inline:50px;
+           padding-top:20px;
+           padding-right:30px;
+          
+        }
+        `;
+
+       
+      

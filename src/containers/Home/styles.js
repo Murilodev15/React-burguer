@@ -71,6 +71,7 @@ height: 58px;
 padding:25px 10px;
 border:none;
 outline:none;
+color: #FFFFFF;
 `;
 
 export const Button = styled.button`

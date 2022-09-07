@@ -1,10 +1,10 @@
-import React, {useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
-import { Container, Image, ContainerItens, H1, Button,User} from "./styles"
+import { Container, Image, ContainerItens, H1, Button, User } from "./styles"
 
 import CodeBurguer from "../../Assets/burger.svg"
-
+import Trash from "../../Assets/trash.svg"
 
 
 function Users() {
@@ -16,51 +16,57 @@ function Users() {
 
   useEffect(() => {
 
-  async function fetchUsers() {
-    const { data:newUsers } = await axios.get("http://localhost:3001/users");
-  
+    async function fetchUsers() {
+      const { data: newUsers } = await axios.get("http://localhost:3001/users");
 
-    setUsers(newUsers);
+
+      setUsers(newUsers);
+    }
+    fetchUsers();
+  }, []);
+
+  async function deleteUser(userId) {
+    await axios.delete(`http://localhost:3001/users/${userId}`)
+    const newUsers = users.filter((user) => user.id !== userId)
+
+    setUsers(newUsers)
   }
-     fetchUsers();
-  },[]);
 
-     async function deleteUser(userId){
-     await axios.delete(`http://localhost:3001/users/${userId}`)
-     const newUsers = users.filter((user)=> user.id !== userId)
+  function goBackpage() {
+    navigate("/");
+  }
 
-     setUsers(newUsers)
-     }
 
-     function goBackpage() {
-      navigate("/");
-     }
 
-  return(<Container>
-     <Image alt="Logo-imagem" src={CodeBurguer}/>
+  return (<Container>
+    <Image alt="Logo-imagem" src={CodeBurguer} />
 
-     <ContainerItens>
-     <H1>Pedidos</H1>
-     
-     <ul>
-      {users.map((user) => (
-        <User key={user.id}>
-          <p>{user.name}</p> <p>{user.age}</p>
-          <button onClick={() => deleteUser(user.id)}>
+    <ContainerItens>
+      <H1>Pedidos</H1>
+
+      <ul>
+        {users.map((user) => (
+          <User key={user.id}>
+
+           <div> <p>{user.age}</p> <p1>{user.name}</p1></div>
+
+              <button onClick={() => deleteUser(user.id)}> <img src={Trash} alt='lata-de-lixo' />
+
+              </button>
             
-            </button> 
-            </User>
-      ))}
+           
+          </User>
+        ))}
       </ul>
 
 
 
-    
 
-     <Button onClick={goBackpage}> Voltar </Button>
-     </ContainerItens>
 
-     </Container>
+      <Button onClick={goBackpage}> Voltar </Button>
+    </ContainerItens>
+
+  </Container >
   );
 }
 
